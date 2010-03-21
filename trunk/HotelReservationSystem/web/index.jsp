@@ -25,11 +25,12 @@
                     <td width="200">left side frame</td>
                     <td width="808" height="300">
                         <table border="1" width="80%">
-                            <%Vector<String[]> v = database.getGroup(); for(String []s:v){%>
+                            <%Vector<String[]> v = database.getGroup();
+                                        for (String[] s : v) {%>
                             <tr><td><%=s[1]%></td></tr>
                             <tr>
                                 <td>
-                                  <%=s[2]%>
+                                    <%=s[2]%>
                                 </td>
                                 <td>
                                     <%=s[3]%>
