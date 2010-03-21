@@ -36,21 +36,21 @@ public class loginserv extends HttpServlet{
 				String sql = "select password from user where username='"+username+"'";
 				String password=database.getInfomation(sql).trim();
 				if(password.equals(password)){
-					httpsession.setAttribute("uname",username);
+					httpsession.setAttribute("username",username);
 					httpservletresponse.sendRedirect("index.jsp");
 				}
 				else{
 					msg=username+" invalid password!!!<br><br>"+
 					       "<a href=login.jsp>please login again</a>";
 					httpservletrequest.setAttribute("msg",msg);
-					httpservletrequest.getRequestDispatcher("info.jsp").forward(httpservletrequest,httpservletresponse);
+					httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 				}
 			}
 			else{
 				msg=username+"invalid user<br><br>"+
 				     "<a href=login.jsp>please login again</a>";
 				httpservletrequest.setAttribute("msg",msg);
-				httpservletrequest.getRequestDispatcher("info.jsp").forward(httpservletrequest,httpservletresponse);
+				httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 			}
 
         }
