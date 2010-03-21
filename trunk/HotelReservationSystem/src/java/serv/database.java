@@ -109,15 +109,53 @@ public class database {
 		String Infomation=null;
 		try{
 			String sql = new String(sqla);
-			connection = database.getConnection();//得到数据库连接
-			statement = connection.createStatement();//创建语句对象
-			resultset = statement.executeQuery(sql);//执行查询
+			connection = database.getConnection();
+			statement = connection.createStatement();
+			resultset = statement.executeQuery(sql);
 			if(resultset.next())
-			{Infomation=new String(resultset.getString(1).getBytes("iso8859-1"),"gbk");}
+			{Infomation=new String(resultset.getString(1));}
 		}
 		catch(Exception e)	{e.printStackTrace();}
 		finally {database.closeConnection();}
 		return Infomation;
 	}
 
+        	public static Vector<String[]> getGroup(){
+		Vector<String[]> vector =new Vector<String[]>();
+		try{
+			 connection = database.getConnection();
+			 statement = connection.createStatement();
+			 String sql = "select groupid,groupname,groupdetails,grouprules from group";
+			 resultset = statement.executeQuery(sql);
+			 while(resultset.next()){
+			    String group[] = new String[5];
+			    for(int i=0;i<group.length;i++){
+			      group[i] = new String(resultset.getString(i+1));
+			    }
+				vector.add(group);
+			}
+		}
+		catch(Exception e)
+		{e.printStackTrace();}
+		finally
+		{database.closeConnection();}
+		return vector;
+	}
+	public static Vector<String> getGroupInfomation(int groupid){
+		Vector<String> vector =new Vector<String>();
+		try{
+			 connection = database.getConnection();
+			 statement = connection.createStatement();
+			 String sql = "select groupid,groupname,groupdetails,grouprules from group where groupid="+groupid;
+			 resultset = statement.executeQuery(sql);
+			 if(resultset.next()){
+			 	for(int i=1;i<6;i++){
+			 		vector.add(new String(resultset.getString(i)));
+			 	}
+			 }
+		}
+		catch(Exception e){e.printStackTrace();}
+		finally	{database.closeConnection();}
+		return vector;
+	}
 }

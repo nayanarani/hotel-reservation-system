@@ -41,7 +41,7 @@ public class regserv extends HttpServlet{
 			msg=username+": has been existed try another one!!!<br/><a href=reg.jsp>return to the register page!</a>";
 		}
 		else{
-			String sql = "insert into user values ('','"+username+"','"+password+"','"+realname+"','"+gender+"','"+email+"','"+telephone+"')";
+			String sql = "insert into user values (NULL,'"+username+"','"+password+"','"+realname+"','"+gender+"','"+email+"','"+telephone+"')";
 			database.update(sql);
 			msg="Congratulations,username:"+username+" is our membership now !!!<br/><a href=login.jsp>now login???</a>";
 		}
