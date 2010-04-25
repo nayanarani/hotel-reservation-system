@@ -60,6 +60,7 @@
 
 
             <table width="200" border="1">
+                <form name="changeinfo" action="changeinfoserv" method="post">
                 <tr>
                     <td width="76">real name:</td>
                     <td width="108"><label>
@@ -88,7 +89,7 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td><input type="submit" name="submit" id="submit" value="submit"></td>
-                </tr>
+                </tr></form>
             </table>
         </div>
 

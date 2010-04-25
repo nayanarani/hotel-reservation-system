@@ -165,4 +165,18 @@ public class database {
         }
         return vector;
     }
+    	public static String getInfo(String sqla){
+		String Info=null;
+		try{
+			String sql = new String(sqla.getBytes());
+			connection = database.getConnection();
+			statement = connection.createStatement();
+			resultset = statement.executeQuery(sql);
+			if(resultset.next())
+			{Info=new String(resultset.getString(1));}
+		}
+		catch(Exception e)	{e.printStackTrace();}
+		finally {database.closeConnection();}
+		return Info;
+	}
 }
