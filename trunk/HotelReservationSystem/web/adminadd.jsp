@@ -4,7 +4,7 @@
     Author     : Liu Chun
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -15,7 +15,7 @@
     </head>
     <body>
     <div>
-      <table width="381" border="1">
+      <table width="381" border="1"><form name="adminadd" action="adminaddserv" method="post">
         <tr>
           <td width="115">admin username:</td>
           <td width="250"><label>
@@ -33,7 +33,7 @@
           <td><label>
             <input type="submit" name="submit" id="submit" value="submit">
           </label></td>
-        </tr>
+        </tr></form>
       </table>
     </div>
 
