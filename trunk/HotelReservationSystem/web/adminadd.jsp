@@ -1,7 +1,7 @@
 <%-- 
     Document   : adminadd
     Created on : 2010-3-28, 15:01:40
-    Author     : Administrator
+    Author     : Liu Chun
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,9 +11,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>add admin</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+    <div>
+      <table width="381" border="1">
+        <tr>
+          <td width="115">admin username:</td>
+          <td width="250"><label>
+            <input type="text" name="adminusername" id="adminusername">
+          </label></td>
+        </tr>
+        <tr>
+          <td>admin password:</td>
+          <td><label>
+            <input type="text" name="adminpassword" id="adminpassword">
+          </label></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><label>
+            <input type="submit" name="submit" id="submit" value="submit">
+          </label></td>
+        </tr>
+      </table>
+    </div>
+
     </body>
 </html>
