@@ -22,7 +22,15 @@
                     <td colspan="2">navigator</td>
                 </tr>
                 <tr>
-                    <td width="200">left side frame</td>
+                    <td width="200">
+                        <%if(session.getAttribute("username")==null){%>
+                        Welcome Guest ( <a href=login.jsp>Log In</a> | <a href="reg.jsp">Register</a>  )
+                        <%}else{%>
+                        <%String username = (String)session.getAttribute("username");%>
+                        Welcome,<%out.println(username);%>
+                        <a href=useredit.jsp>Edit my profile</a> | <a href=logoutserv?action=logout>logout</a>
+                        <%}%>
+                        left side frame</td>
                     <td width="808" height="300">
                         <table border="1" width="80%">
                             <%Vector<String[]> v = database.getGroup();
