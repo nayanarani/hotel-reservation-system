@@ -1,6 +1,6 @@
 <%-- 
     Document   : adminedit
-    Author     : Administrator
+    Author     : Tang Wanjian
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
@@ -13,6 +13,28 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+    <div>
+      <table width="362" border="1">
+        <tr>
+          <td width="176">admin old password:</td>
+          <td width="170"><label>
+            <input type="text" name="adminoldpassword" id="adminoldpassword">
+          </label></td>
+        </tr>
+        <tr>
+          <td>admin new password:</td>
+          <td><label>
+            <input type="text" name="adminnewpassword" id="adminnewpassword">
+          </label></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><label>
+            <input type="submit" name="submit" id="submit" value="submit">
+          </label></td>
+        </tr>
+      </table>
+    </div>
+
     </body>
 </html>
