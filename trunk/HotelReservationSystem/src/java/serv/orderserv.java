@@ -57,19 +57,19 @@ public class orderserv extends HttpServlet{
 				String startday = (String)httpservletrequest.getParameter("startday");
 				String starthour = (String)httpservletrequest.getParameter("starthour");
 
-				String finfishyear = (String)httpservletrequest.getParameter("finfishyear");
-				String finfishmonth = (String)httpservletrequest.getParameter("finfishmonth");
-				String finfishday = (String)httpservletrequest.getParameter("finfishday");
-				String finfishhour = (String)httpservletrequest.getParameter("finfishhour");
+				String finishyear = (String)httpservletrequest.getParameter("finishyear");
+				String finishmonth = (String)httpservletrequest.getParameter("finishmonth");
+				String finishday = (String)httpservletrequest.getParameter("finishday");
+				String finishhour = (String)httpservletrequest.getParameter("finishhour");
 
 				String group = (String)httpservletrequest.getParameter("group");
-				String ftime = startyear+"-"+startyear+"-"+startyear+"-"+startyear+":"+"00";
-				String etime = finfishyear+"-"+finfishmonth+"-"+finfishday+"-"+finfishhour+":"+"00";
+				String starttime = startyear+"-"+startmonth+"-"+startday+"-"+starthour+":"+"00";
+				String endtime = finishyear+"-"+finishmonth+"-"+finishday+"-"+finishhour+":"+"00";
 				String[] s = new String[4];
 				s[0] = orderNum;
                                 s[1] = group;
-				s[2] = ftime;
-                                s[3] = etime;
+				s[2] = starttime;
+                                s[3] = endtime;
 				OrderList.add(s);
 				session.setAttribute("OrderList",OrderList);
 			}
