@@ -103,7 +103,7 @@ public class orderserv extends HttpServlet{
 				     "<a href=login.jsp>login>>";
 			}
 			httpservletrequest.setAttribute("msg",msg);
-			httpservletrequest.getRequestDispatcher("info.jsp").forward(httpservletrequest,httpservletresponse);
+			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 		}
     }
 }
