@@ -154,7 +154,7 @@ public class database {
             String sql = "select groupid,groupname,groupdetails,grouprules from roomgroup where groupid=" + groupid;
             resultset = statement.executeQuery(sql);
             if (resultset.next()) {
-                for (int i = 1; i < 6; i++) {
+                for (int i = 1; i < 5; i++) {
                     vector.add(new String(resultset.getString(i)));
                 }
             }

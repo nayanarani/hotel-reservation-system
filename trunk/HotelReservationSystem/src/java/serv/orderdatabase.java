@@ -18,21 +18,21 @@ public class orderdatabase {
     private static Statement statement = null;
     private static ResultSet resultset = null;
 
-    public static boolean isOrdered(String rgid1) {
+    public static boolean isOrdered(String rname) {
         boolean b = false;
         try {
             String accept = new String("waiting for accept");
             String used = new String("used");
-            String rgid = new String(rgid1);
+            String roomname = new String(rname);
             connection = database.getConnection();
             statement = connection.createStatement();
-            resultset = statement.executeQuery("select rgid from oinfo where ostatus='"
-                    + accept + "' and rgid='" + rgid + "'");
+            resultset = statement.executeQuery("select roomname from orderdetail where status='"
+                    + accept + "' and roomname='" + roomname + "'");
             if (resultset.next()) {
                 b = true;
             }
-            resultset = statement.executeQuery("select rgid from resource where rstatus='"
-                    + used + "' and rgid='" + rgid + "'");
+            resultset = statement.executeQuery("select roomname from room where status='"
+                    + used + "' and roomname='" + roomname + "'");
             if (resultset.next()) {
                 b = true;
             }

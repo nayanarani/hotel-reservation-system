@@ -38,6 +38,10 @@
         <servlet-name>listserv</servlet-name>
         <servlet-class>serv.listserv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>orderserv</servlet-name>
+        <servlet-class>serv.orderserv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>changepasswordserv</servlet-name>
         <url-pattern>/changepasswordserv</url-pattern>
@@ -69,6 +73,10 @@
     <servlet-mapping>
         <servlet-name>listserv</servlet-name>
         <url-pattern>/listserv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>orderserv</servlet-name>
+        <url-pattern>/orderserv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
