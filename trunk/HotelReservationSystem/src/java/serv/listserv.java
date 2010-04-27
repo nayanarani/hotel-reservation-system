@@ -33,7 +33,18 @@ public class listserv extends HttpServlet {
             int groupid = Integer.parseInt(httpservletrequest.getParameter("groupid"));
             Vector<String> list = database.getGroupInfomation(groupid);
             session.setAttribute("list", list);
-            //httpservletresponse.sendRedirect(".jsp");
+            httpservletresponse.sendRedirect("roomgrouplist.jsp");
         }
+        if(action.equals("status")){
+			Vector<String []> v = null;
+			String isOrdered = "NO";
+			String roomname = httpservletrequest.getParameter("roomname");
+			if(orderdatabase.isOrdered(roomname)) {isOrdered = "YES";}
+			else {v = orderdatabase.getOrderedDay(roomname);}
+			httpservletrequest.setAttribute("v",v);
+			httpservletrequest.setAttribute("roomname",roomname);
+			httpservletrequest.setAttribute("isOrdered",isOrdered);
+			httpservletrequest.getRequestDispatcher("statussearch.jsp").forward(httpservletrequest,httpservletresponse);
+		}
     }
 }

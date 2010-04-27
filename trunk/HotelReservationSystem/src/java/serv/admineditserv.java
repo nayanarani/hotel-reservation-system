@@ -9,7 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 /**
  *
- * @author Administrator
+ * @author Wang Qichen
  */
 public class admineditserv extends HttpServlet{
     public void init(ServletConfig servletconfig) throws ServletException {

@@ -41,7 +41,7 @@
                                     <%=s[2]%>
                                 </td>
                                 <td>
-                                    <%=s[3]%>
+                                    <%=s[3]%><a href=listserv?action=list&&groupid=<%=s[0]%>>reservation a room!>></a>
                                 </td>
                             </tr>
                             <%}%>

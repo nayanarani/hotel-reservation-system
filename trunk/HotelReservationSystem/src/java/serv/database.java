@@ -179,4 +179,78 @@ public class database {
 		finally {database.closeConnection();}
 		return Info;
 	}
+
+     public static int getTotal(int span,int group){
+	int result=0;
+	String sql = "";
+	try{
+		connection = database.getConnection();
+		statement = connection.createStatement();
+		if(group==0)
+		{sql = "select count(*) from room";}
+		else{
+			sql = "select count(*) from room "+"where roomgroup='"+group+"'";
+		}
+		resultset = statement.executeQuery(sql);
+	    resultset.next();
+	    int rows=resultset.getInt(1);
+	    result=rows/span+((rows%span==0)?0:1);
+	}
+	catch(Exception e){e.printStackTrace();}
+	finally{database.closeConnection();}
+	return result;
+}
+public static Vector<String[]> getPageContent(int page,int span,int group){
+	Vector<String[]> v = new Vector<String[]>();
+	String sql = "";
+	int startRow = 	(page-1)*span;
+	try{
+		connection = database.getConnection();
+		statement = connection.createStatement();
+		if(group==0){
+			sql = "select roomname,style,cost,details,status,roomid,groupname from "+
+			       "room,roomgroup where room.roomgroup=roomgroup.groupid order "+
+			        "by roomgroup, roomname, roomid";
+		}
+		else{
+			sql = "select roomname,style,cost,details,status,roomid,groupname "+
+			 	   "from room,roomgroup where room.roomgroup=roomgroup.groupid "+
+			 	   "and roomgroup='"+group+"' order by roomname";
+		}
+		resultset = statement.executeQuery(sql);
+		if(startRow!=0)
+		{resultset.absolute(startRow);}
+		int c=0;
+		while(c<span&&resultset.next()){
+			String s[] = new String[7];
+			for(int i=0;i<s.length;i++){
+		      s[i] =
+		    	new String(resultset.getString(i+1));
+		    }
+			v.add(s);
+			c++;
+		}
+	}
+	catch(Exception e){e.printStackTrace();}
+	finally{database.closeConnection();}
+	return v;
+}
+	public static int getId(String table,String row){
+		int id = 0;
+		try	{
+			connection = database.getConnection();
+			statement = connection.createStatement();
+			resultset = statement.executeQuery("select count(*) from "+table);
+			resultset.next();
+			if(resultset.getInt(1)==0)	{ id = 1; }
+			else{
+				resultset = statement.executeQuery("select max("+row+") from "+table);
+				resultset.next();
+				id = Integer.parseInt(resultset.getString(1));
+			}
+		}
+		catch(Exception e){e.printStackTrace();}
+		finally	{database.closeConnection();}
+		return id;
+	}
 }
