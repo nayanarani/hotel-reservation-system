@@ -47,11 +47,12 @@
                             </label></td>
                     </tr>
                     <tr>
-                        <td>&nbsp;</td>
+                        <td></td>
                         <td><label>
                                 <input type="hidden" name="action" value="login">
                                 <input type="submit" name="submit" id="submit" value="submit" onclick="checkinformation()">
-                            </label></td>
+                            </label>
+                        </td>
                     </tr>
                 </form>
             </table>

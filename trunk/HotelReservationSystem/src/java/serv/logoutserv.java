@@ -27,6 +27,8 @@ public class logoutserv extends HttpServlet{
         String msg = "";
         if(action.equals("logout")){
 			httpsession.removeAttribute("username");
+                        httpsession.removeAttribute("adminroot");
+                        httpsession.removeAttribute("adminusername");
 			msg = "Thank you! you have been logout saftly";
 			httpservletrequest.setAttribute("msg",msg);
 			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);

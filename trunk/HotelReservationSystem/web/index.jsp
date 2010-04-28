@@ -16,21 +16,39 @@
         <div>
             <table width="1024" border="1">
                 <tr>
-                    <td colspan="2"><h1>Hotel Reservation System</h1></td>
+                    <td colspan="2"><h1>Hotel Reservation System</h1> <a href="adminlogin.jsp">admin login</a></td>
                 </tr>
                 <tr>
                     <td colspan="2">navigator</td>
                 </tr>
                 <tr>
                     <td width="200">
-                        <%if(session.getAttribute("username")==null){%>
-                        Welcome Guest ( <a href=login.jsp>Log In</a> | <a href="reg.jsp">Register</a>  )
-                        <%}else{%>
+                        <%if(session.getAttribute("username")==null && session.getAttribute("adminusername")==null && session.getAttribute("adminroot")==null){%>
+                        Welcome Guest<br><a href=login.jsp>Log In</a><br><br><a href="reg.jsp">Register</a>
+                        <%}else if(session.getAttribute("username")!=null){%>
                         <%String username = (String)session.getAttribute("username");%>
-                        Welcome,<%out.println(username);%>
-                        <a href=useredit.jsp>Edit my profile</a> | <a href=logoutserv?action=logout>logout</a>
+                        Welcome,<%out.println(username);%><br>
+                        <a href=useredit.jsp>Edit my profile</a><br><br>
+                        <a href=userorder.jsp>My Order</a><br><br>
+                        <a href=logoutserv?action=logout>logout</a>
+                        <%} else if(session.getAttribute("adminusername")!=null){ %>
+                        <%String adminusername = (String)session.getAttribute("adminusername");%>
+                        Welcome,<%out.println(adminusername);%><br>
+                        <a href=index.jsp>add room</a><br><br>
+                        <a href=index.jsp>add room group</a><br><br>
+                        <a href=index.jsp>edit room</a><br><br>
+                        <a href=index.jsp>edit room group</a><br><br>
+                        <a href=index.jsp>delete room</a><br><br>
+                        <a href=index.jsp>delete room group</a><br><br>
+                        <a href=logoutserv?action=logout>logout</a>
+                        <%} else if(session.getAttribute("adminroot")!=null){ %>
+                        <%String adminroot = (String)session.getAttribute("adminroot");%>
+                        Welcome,<%out.println(adminroot);%><br>
+                        <a href=index.jsp>add admin</a><br><br>
+                        <a href=index.jsp>edit admin</a><br><br>
+                        <a href=index.jsp>delete admin</a><br><br>
                         <%}%>
-                        left side frame</td>
+                        </td>
                     <td width="808" height="300">
                         <table border="1" width="80%">
                             <%Vector<String[]> v = database.getGroup();
@@ -41,7 +59,7 @@
                                     <%=s[2]%>
                                 </td>
                                 <td>
-                                    <%=s[3]%><a href=listserv?action=list&&groupid=<%=s[0]%>>reservation a room!>></a>
+                                    <a href=listserv?action=list&&groupid=<%=s[0]%>>reservation a room!>></a>
                                 </td>
                             </tr>
                             <%}%>

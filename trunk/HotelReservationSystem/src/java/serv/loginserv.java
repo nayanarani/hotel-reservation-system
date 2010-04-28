@@ -44,12 +44,38 @@ public class loginserv extends HttpServlet {
                     httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest, httpservletresponse);
                 }
             } else {
-                msg = username + "invalid user!!!<br><br><a href=login.jsp>please login again</a>";
+                msg = username + " invalid user!!!<br><br><a href=login.jsp>please login again</a>";
                 httpservletrequest.setAttribute("msg", msg);
                 httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest, httpservletresponse);
             }
 
         }
-
+       if(action.equals("adminlogin")){
+			httpsession.removeAttribute("adminusername");
+                        String root="root";
+                        String Advanced="advanced";
+			String adminusername = httpservletrequest.getParameter("username").trim();
+			String adminpwd =  httpservletrequest.getParameter("password").trim();
+			String sqla = "select adminpassword from admin where adminusername='"+adminusername+"'";
+			String dbpwd = database.getInfo(sqla);
+			if(dbpwd!=null&&adminpwd.equals(dbpwd)){
+                            String sqlb = "select authority from admin where adminusername='"+adminusername+"'";
+                            String authority = database.getInfo(sqlb);
+                            if(authority.equals(root.intern())){
+				httpsession.setAttribute("adminroot",adminusername);
+                            httpservletresponse.sendRedirect("index.jsp");
+                            } else if(authority.equals(Advanced.intern())){
+                                httpsession.setAttribute("adminusername",adminusername);
+                            httpservletresponse.sendRedirect("index.jsp");
+                            }
+			}
+			else{
+				msg = "login error!<br><br>"+
+				 		"<a href=adminlogin.jsp>login again?";
+			httpservletrequest.setAttribute("msg",msg);
+			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
+		}
     }
+        			}
+
 }

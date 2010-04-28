@@ -59,10 +59,6 @@
         <url-pattern>/adminaddserv</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>logoutserv</servlet-name>
-        <url-pattern>/regserv</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>regserv</servlet-name>
         <url-pattern>/regserv</url-pattern>
     </servlet-mapping>
@@ -77,6 +73,10 @@
     <servlet-mapping>
         <servlet-name>orderserv</servlet-name>
         <url-pattern>/orderserv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutserv</servlet-name>
+        <url-pattern>/logoutserv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
