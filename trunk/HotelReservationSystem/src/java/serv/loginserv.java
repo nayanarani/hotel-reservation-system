@@ -35,7 +35,7 @@ public class loginserv extends HttpServlet {
             if (database.isExist(sqla)) {
                 String sql = "select password from user where username='" + username + "'";
                 String password = database.getInfomation(sql).trim();
-                if (password.equals(password)) {
+                if (pserwd.equals(password)) {
                     httpsession.setAttribute("username", username);
                     httpservletresponse.sendRedirect("index.jsp");
                 } else {
