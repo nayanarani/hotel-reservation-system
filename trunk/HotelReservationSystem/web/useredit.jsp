@@ -45,12 +45,13 @@
                 <tr>
                     <td>new password:</td>
                     <td><label>
-                            <input type="text" name="new password" id="new password">
+                            <input type="text" name="newpassword" id="newpassword">
                         </label></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td><label>
+                            <input type="hidden" name="action" value="changepassword">
                             <input type="submit" name="submit" id="submit" value="submit" onclick="checkPassword()">
                         </label></td>
                 </tr></form>
@@ -71,6 +72,8 @@
                     <td>gender:</td>
                     <td><label>
                             <select name="gender" id="gender">
+                                <option>male</option>
+                                <option>female</option>
                             </select>
                         </label></td>
                 </tr>
@@ -88,7 +91,11 @@
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><input type="submit" name="submit" id="submit" value="submit"></td>
+                    <td>
+                        <label>
+                        <input type="hidden" name="action" value="changeinfo">
+                    <input type="submit" name="submit" id="submit" value="submit"></label>
+                    </td>
                 </tr></form>
             </table>
         </div>

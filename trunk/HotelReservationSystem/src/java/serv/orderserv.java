@@ -72,7 +72,9 @@ public class orderserv extends HttpServlet{
                                 s[3] = endtime;
 				OrderList.add(s);
 				session.setAttribute("OrderList",OrderList);
+                                msg = "Reservation successful!<br><br><a href=roomgrouplist.jsp>continue?</a> or <a href=index.jsp>return</a>";
 			}
+                        httpservletrequest.setAttribute("msg",msg);
 			httpservletresponse.sendRedirect("roomgrouplist.jsp");
 		}
             if(action.equals("delete")){

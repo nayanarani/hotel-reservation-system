@@ -102,7 +102,7 @@
                 <tr>
                     <td>type:</td>
                     <td>
-                        <input type="text" name="group" value=<%= groupname%> size="5">
+                        <input type="text" name="group" value=<%= groupname%>>
                     </td>
                 </tr>
                 <%Date now = new Date();

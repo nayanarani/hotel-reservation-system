@@ -43,7 +43,7 @@
                     <tr>
                         <td>password:</td>
                         <td><label>
-                                <input type="text" name="password" id="password">
+                                <input type="password" name="password" id="password">
                             </label></td>
                     </tr>
                     <tr>

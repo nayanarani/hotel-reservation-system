@@ -27,12 +27,12 @@ public class changepasswordserv extends HttpServlet{
         String msg = "";
         if (action.equals("changepassword")) {
 			String username=(String)httpsession.getAttribute("username");
-			String currentPwd = httpservletrequest.getParameter("currentPwd").trim();
-			String newPwd = httpservletrequest.getParameter("newPwd").trim();
-			String sqla = "select pwd from user where username='"+username+"'";
+			String oldpassword = httpservletrequest.getParameter("oldpassword").trim();
+			String newpassword = httpservletrequest.getParameter("newpassword").trim();
+			String sqla = "select password from user where username='"+username+"'";
 			String DBpwd =  database.getInfo(sqla);
-			if(currentPwd.equals(DBpwd)){
-				String sqlb = "update user set pwd='"+newPwd+"'where username='"+
+			if(oldpassword.equals(DBpwd)){
+				String sqlb = "update user set password='"+newpassword+"'where username='"+
 								username+"'";
 				database.update(sqlb);
 				msg = "Success! please login your account with new password next time.<br>";

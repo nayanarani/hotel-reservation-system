@@ -29,7 +29,7 @@ public class logoutserv extends HttpServlet{
 			httpsession.removeAttribute("username");
                         httpsession.removeAttribute("adminroot");
                         httpsession.removeAttribute("adminusername");
-			msg = "Thank you! you have been logout saftly";
+			msg = "Thank you! you have been logout saftly<br><br><a href=index.jsp>return?</a>";
 			httpservletrequest.setAttribute("msg",msg);
 			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 		}
