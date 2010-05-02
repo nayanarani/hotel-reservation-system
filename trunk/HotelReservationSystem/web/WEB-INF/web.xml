@@ -42,6 +42,10 @@
         <servlet-name>orderserv</servlet-name>
         <servlet-class>serv.orderserv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>admindelserv</servlet-name>
+        <servlet-class>serv.admindelserv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>changepasswordserv</servlet-name>
         <url-pattern>/changepasswordserv</url-pattern>
@@ -77,6 +81,10 @@
     <servlet-mapping>
         <servlet-name>logoutserv</servlet-name>
         <url-pattern>/logoutserv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>admindelserv</servlet-name>
+        <url-pattern>/admindelserv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

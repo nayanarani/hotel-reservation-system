@@ -11,13 +11,43 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <script language="javascript" type="text/javascript">
+            function checkadmininformation() {
+     if(document.adminedit.adminusername.value=="")
+      {
+         alert("please input admin username");
+         adminedit.adminusername.focus();
+         return false;
+      }
+     if(document.adminedit.adminoldpassword.value=="")
+      {
+         alert("please input admin old password");
+         adminedit.adminoldpassword.focus();
+         return false;
+      }
+     if(document.adminedit.adminnewpassword.value=="")
+      {
+         alert("please input admin new password");
+         adminedit.adminoldpassword.focus();
+         return false;
+      }
+         document.adminedit.submit();
+            }
+        </script>
     </head>
     <body>
     <div>
-      <table width="362" border="1">
+      <table>
+          <form name="adminedit" action="admineditserv" method="post">
         <tr>
-          <td width="176">admin old password:</td>
-          <td width="170"><label>
+          <td>admin username:</td>
+          <td><label>
+            <input type="text" name="adminusername" id="adminusername">
+          </label></td>
+        </tr>
+        <tr>
+          <td>admin old password:</td>
+          <td><label>
             <input type="text" name="adminoldpassword" id="adminoldpassword">
           </label></td>
         </tr>
@@ -28,11 +58,12 @@
           </label></td>
         </tr>
         <tr>
-          <td>&nbsp;</td>
+          <td></td>
           <td><label>
-            <input type="submit" name="submit" id="submit" value="submit">
+                  <input type="hidden" name="action" value="adminedit">
+                  <input type="submit" name="submit" id="submit" value="submit" onclick="checkadmininformation()">
           </label></td>
-        </tr>
+        </tr></form>
       </table>
     </div>
 

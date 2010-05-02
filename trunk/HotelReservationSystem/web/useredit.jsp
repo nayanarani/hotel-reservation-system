@@ -63,8 +63,8 @@
             <table width="200" border="1">
                 <form name="changeinfo" action="changeinfoserv" method="post">
                 <tr>
-                    <td width="76">real name:</td>
-                    <td width="108"><label>
+                    <td>real name:</td>
+                    <td><label>
                             <input type="text" name="realname" id="realname">
                         </label></td>
                 </tr>

@@ -17,9 +17,9 @@ public class orderserv extends HttpServlet{
 	{
 		super.init(conf);
 	}
-	public void doGet(HttpServletRequest req,HttpServletResponse res)
+	public void doGet(HttpServletRequest httpservletrequest,HttpServletResponse httpservletresponse)
 	throws ServletException, IOException{
-		doPost(req,res);
+		doPost(httpservletrequest,httpservletresponse);
 	}
 	public void doPost(HttpServletRequest httpservletrequest,HttpServletResponse httpservletresponse)
 	throws ServletException, IOException{
@@ -43,7 +43,7 @@ public class orderserv extends HttpServlet{
 				httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 			}
 			else{
-				String sql = "select * from order where orderuser='"+username+"'";
+				String sql = "select * from orders where orderuser='"+username+"'";
 				Vector<String []> list = orderdatabase.getOrderList(sql);
 				httpservletrequest.setAttribute("list",list);
 				httpservletrequest.getRequestDispatcher("list.jsp").forward(httpservletrequest,httpservletresponse);
@@ -107,5 +107,55 @@ public class orderserv extends HttpServlet{
 			httpservletrequest.setAttribute("msg",msg);
 			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 		}
+          if(action.equals("allOrders")){
+			if(session.getAttribute("adminusername")!=null){
+				String sql = "";
+				int conditon = Integer.parseInt(httpservletrequest.getParameter("condition"));
+				switch(conditon){
+					case 1:
+					sql = "select * from orders";
+					break;
+					case 2:
+					sql = "select * from orders where status='"+successfully+"' or status='"+failed+"'";
+					break;
+					case 3:
+					sql = "select * from orders where status='"+accept+"'";
+					break;
+				}
+				Vector<String []> order = orderdatabase.getOrderList(sql);
+				httpservletrequest.setAttribute("order",order);
+				httpservletrequest.getRequestDispatcher("adminorder.jsp").forward(httpservletrequest,httpservletresponse);
+			}
+			else{
+				msg = "login first";
+				httpservletrequest.setAttribute("msg",msg);
+				httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
+			}
+		}
+                if(action.equals("ListDetail")){
+			String orderid = httpservletrequest.getParameter("orderid");
+			Vector<String []> ListDetail = orderdatabase.getOrderDetail(orderid);
+			httpservletrequest.setAttribute("ListDetail",ListDetail);
+			httpservletrequest.setAttribute("orderid",orderid);
+			httpservletrequest.getRequestDispatcher("adminorderdetail.jsp").forward(httpservletrequest,httpservletresponse);
+		}
+                if(action.equals("dealOrder")){
+			String adminusername = (String)session.getAttribute("adminusername");
+			String orderPS = httpservletrequest.getParameter("reason");
+			String status = httpservletrequest.getParameter("status");
+			int orderid = Integer.parseInt(httpservletrequest.getParameter("orderid"));
+			String sqla = "update orders set status='"+status+"',orderPS='"+
+							orderPS+"',applyadmin='"+adminusername+"'where orderid="+orderid;
+			String sqlb = "update orderdetail set status='"+status+"' where orderid="+orderid;
+			boolean b = database.update(sqla,sqlb);		
+			if(b==true){
+				msg = "deal!<br><br>"
+					+"<a href=orderserv?action=allOrders&&condition=1>return";
+			}
+			else{msg = "error";}
+			httpservletrequest.setAttribute("msg",msg);
+			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
+		}
+	
     }
 }

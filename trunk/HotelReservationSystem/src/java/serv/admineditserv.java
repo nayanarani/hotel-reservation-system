@@ -43,6 +43,7 @@ public class admineditserv extends HttpServlet{
 					msg = "Edit Successed!";
 				}
 			}
+                httpservletrequest.setAttribute("msg",msg);
                 httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest, httpservletresponse);
 		}
             }

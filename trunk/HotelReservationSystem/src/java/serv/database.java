@@ -132,7 +132,7 @@ public class database {
             String sql = "select * from roomgroup";
             resultset = statement.executeQuery(sql);
             while (resultset.next()) {
-                String group[] = new String[4];
+                String group[] = new String[5];
                 for (int i = 0; i < group.length; i++) {
                     group[i] = new String(resultset.getString(i + 1));
                 }
@@ -151,10 +151,10 @@ public class database {
         try {
             connection = database.getConnection();
             statement = connection.createStatement();
-            String sql = "select groupid,groupname,groupdetails,grouprules from roomgroup where groupid=" + groupid;
+            String sql = "select groupid,groupname,groupdetails,grouprules,groupimage from roomgroup where groupid=" + groupid;
             resultset = statement.executeQuery(sql);
             if (resultset.next()) {
-                for (int i = 1; i < 5; i++) {
+                for (int i = 1; i < 6; i++) {
                     vector.add(new String(resultset.getString(i)));
                 }
             }
@@ -240,11 +240,11 @@ public static Vector<String[]> getPageContent(int page,int span,int group){
 		try	{
 			connection = database.getConnection();
 			statement = connection.createStatement();
-			resultset = statement.executeQuery("select count(*) from "+table);
+			resultset = statement.executeQuery("select count(*) from "+table+"");
 			resultset.next();
 			if(resultset.getInt(1)==0)	{ id = 1; }
 			else{
-				resultset = statement.executeQuery("select max("+row+") from "+table);
+				resultset = statement.executeQuery("select max("+row+") from '"+table+"'");
 				resultset.next();
 				id = Integer.parseInt(resultset.getString(1));
 			}
@@ -252,5 +252,50 @@ public static Vector<String[]> getPageContent(int page,int span,int group){
 		catch(Exception e){e.printStackTrace();}
 		finally	{database.closeConnection();}
 		return id;
+	}
+        	public static Vector<String[]> getAdminInfo(){
+		Vector<String[]> v = new Vector<String[]>();
+		try{
+			connection = database.getConnection();
+			statement = connection.createStatement();
+			resultset = statement.executeQuery("select adminusername,authority from admin");
+			while(resultset.next()){
+				String s[] = new String[2];
+				s[0] = new String(resultset.getString(1));
+				s[1] = new String(resultset.getString(2));
+				v.add(s);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		finally{database.closeConnection();}
+		return v;
+	}
+                	public static Vector<String[]> getResInfo(String sqla){
+		Vector<String []> v = new Vector<String[]>();
+		try{
+			connection = database.getConnection();
+			statement = connection.createStatement();
+			String sql = new String(sqla);
+			resultset = statement.executeQuery(sql);
+			while(resultset.next()){
+				String s[] = new String[8];
+				for(int i=0;i<s.length-1;i++){
+					s[i] = new String(resultset.getString(i+1));
+				}
+				v.add(s);
+			}
+			for(String s[]:v){
+				String sqlb = "select groupname from roomgroup where groupid='"+s[5]+"'";
+				resultset = statement.executeQuery(sqlb);
+				resultset.next();
+				s[7] = new String(resultset.getString(1));
+			}
+		}
+		catch(Exception e){e.printStackTrace();}
+		finally{database.closeConnection();}
+		return v;
 	}
 }

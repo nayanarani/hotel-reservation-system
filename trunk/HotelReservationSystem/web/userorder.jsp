@@ -57,7 +57,7 @@
 	       <input type="submit" value="submit">
 	      </form>
 	    </td>
-	    <td align="center"><a href="index.jsp">continue>></a></td>
+	    <td><a href="index.jsp">continue>></a></td>
       </tr>
  </table><%}%>
     </body>

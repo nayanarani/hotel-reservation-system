@@ -100,9 +100,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>type:</td>
+                    <td>Group:</td>
                     <td>
-                        <input type="text" name="group" value=<%= groupname%>>
+                        <textarea name="group" readonly="readonly"><%= groupname%></textarea>
                     </td>
                 </tr>
                 <%Date now = new Date();
@@ -231,9 +231,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" align="center">
+                    <td>
                         <input type="hidden" name="action" value="add">
                         <input type="submit" name="add" value="add to order">
+                        <a href="index.jsp">return</a>
                     </td>
                 </tr>
             </form>

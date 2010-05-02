@@ -34,26 +34,25 @@
                         <%} else if(session.getAttribute("adminusername")!=null){ %>
                         <%String adminusername = (String)session.getAttribute("adminusername");%>
                         Welcome,<%out.println(adminusername);%><br>
-                        <a href=index.jsp>add room</a><br><br>
-                        <a href=index.jsp>add room group</a><br><br>
-                        <a href=index.jsp>edit room</a><br><br>
-                        <a href=index.jsp>edit room group</a><br><br>
-                        <a href=index.jsp>delete room</a><br><br>
-                        <a href=index.jsp>delete room group</a><br><br>
+                        <a href=listserv?action=adminList&&groupid=0>manage room</a><br><br>
+                        <a href=listserv?action=adminGroup>manage room group</a><br><br>
+                        <a href=orderserv?action=allOrders&&condition=1>manage order</a><br><br>
                         <a href=logoutserv?action=logout>logout</a>
                         <%} else if(session.getAttribute("adminroot")!=null){ %>
                         <%String adminroot = (String)session.getAttribute("adminroot");%>
                         Welcome,<%out.println(adminroot);%><br>
-                        <a href=index.jsp>add admin</a><br><br>
-                        <a href=index.jsp>edit admin</a><br><br>
-                        <a href=index.jsp>delete admin</a><br><br>
+                        <a href=adminmanage.jsp>manage admin</a><br><br>
+                        <a href=adminedit.jsp>edit password</a><br><br>
+                        <a href=logoutserv?action=logout>logout</a>
                         <%}%>
                         </td>
                     <td width="808" height="300">
                         <table border="1" width="80%">
                             <%Vector<String[]> v = database.getGroup();
                                         for (String[] s : v) {%>
-                            <tr><td><%=s[1]%></td></tr>
+                                        <tr><td><%=s[1]%></td>
+                                            <td><%=s[4]%></td>
+                                        </tr>
                             <tr>
                                 <td>
                                     <%=s[2]%>

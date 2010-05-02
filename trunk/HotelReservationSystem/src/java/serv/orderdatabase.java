@@ -66,15 +66,15 @@ public class orderdatabase {
         return v;
     }
 
-    	public static Vector<String []> getOrderedDay(String rgid1){
+    	public static Vector<String []> getOrderedDay(String getroomname){
 		Vector<String []> v = new Vector<String []>();
 		try{
-			String ostatus = new String("Success!");
-			String rgid = new String(rgid1);
+			String status = new String("Success!");
+			String roomname = new String(getroomname);
 			connection = database.getConnection();
 			statement = connection.createStatement();
-			resultset = statement.executeQuery("select ftime,etime from oinfo where ostatus='"+
-								ostatus+"' and rgid='"+rgid+"'");
+			resultset = statement.executeQuery("select starttime,endtime from orderdetail where status='"+
+								status+"' and roomname='"+roomname+"'");
 			while(resultset.next()){
 				String []s =new String[2];
 				s[0] = new String(resultset.getString(1));
@@ -105,27 +105,23 @@ public class orderdatabase {
        	public static int addOrder(String orderuser,Vector<String[]> OrderList)
 	{
 		int i = 0;
-		int orderdetailid = database.getId("orderdetail","orderdetailid");
-		int orderid = database.getId("order","orderid");
+//		int orderdetailid = database.getId("orderdetail","orderdetailid");
+		int orderid = database.getId("orders","orderid");
 		try{
 			connection = database.getConnection();
 			statement = connection.createStatement();
 			java.util.Date d = new java.util.Date();
 			String ordertime = d.toLocaleString();
 			connection.setAutoCommit(false);
-			String sqla = "insert into order(orderid,orderuser,ordertime) values"+
-					"(NULL,'"+orderuser+"','"+ordertime+"')";
-			String sql = new String(sqla);
-			statement.executeUpdate(sql);
+                        String sqla = "INSERT INTO orders (orderid,orderuser,ordertime) VALUES (NULL,'"+orderuser+"','"+ordertime+"')";
+			statement.executeUpdate(sqla);
 			Vector<String> sqlb = new Vector<String>();
 			for(String []s:OrderList){
 				String roomname = s[0];
 				String starttime = s[2];
                                 String endtime = s[3];
-				String sqlc = "insert into orderdetail(orderdetailid,orderid,roomname,starttime,endtime) values"+
-						"(NULL,"+orderid+",'"+roomname+"','"+starttime+"','"+endtime+"')";
-				String sqld = new String(sqlc);
-				statement.executeUpdate(sqld);
+				String sqlc = "insert into orderdetail (detailid,orderid,roomname,starttime,endtime) values (NULL,"+orderid+",'"+roomname+"','"+starttime+"','"+endtime+"')";
+				statement.executeUpdate(sqlc);
 			}
 			connection.commit();
 			connection.setAutoCommit(true);
@@ -138,5 +134,30 @@ public class orderdatabase {
 		}
 		finally	{database.closeConnection();}
 		return i;
+	}
+        public static Vector<String []> getOrderDetail(String orderid){
+		Vector<String []> v = new Vector<String[]>();
+		try{
+			connection = database.getConnection();
+			statement = connection.createStatement();
+			resultset = statement.executeQuery("select roomname,starttime,endtime,status from orderdetail where orderid='"+orderid+"'");
+			while(resultset.next()){
+				String s[] = new String[5];
+				for(int i=0;i<s.length-1;i++){
+					s[i] = new String(resultset.getString(i+1));
+				}
+				v.add(s);
+			}
+			for(String[] s:v){
+				String roomname = new String(s[0]);
+				resultset = statement.executeQuery("select groupname from roomgroup where groupid=("+
+							"select roomgroup from room where roomname='"+roomname+"')");
+				resultset.next();
+				s[4] = new String(resultset.getString(1));
+			}
+		}
+		catch(Exception e) {e.printStackTrace();}
+		finally	{database.closeConnection();}
+		return v;
 	}
 }

@@ -11,7 +11,8 @@ import javax.servlet.http.*;
  *
  * @author Administrator
  */
-public class adminaddserv extends HttpServlet{
+public class admindelserv extends HttpServlet{
+
     public void init(ServletConfig servletconfig) throws ServletException {
         super.init(servletconfig);
     }
@@ -25,21 +26,20 @@ public class adminaddserv extends HttpServlet{
         HttpSession httpsession = httpservletrequest.getSession(true);
         PrintWriter printwriter = httpservletresponse.getWriter();
         String msg = "";
-            if(action.equals("adminadd")){
-			String adminusername = httpservletrequest.getParameter("adminusername");
-			String adminpassword = httpservletrequest.getParameter("adminpassword");
-			String sql = "insert into admin values"+
-			  			 "(NULL,'"+adminusername+"','"+adminpassword+"','Advanced')";
-			String sqla = "select * from admin where adminusername='"+adminusername+"'";
-			if(database.isExist(sqla)){
-				msg = "Error! the admin username has been existed!";
+if(action.equals("deladmin")){
+                    String adminusername = (String)httpsession.getAttribute("adminusername");
+
+			String cadminusername = httpservletrequest.getParameter("adminusername");
+			if(cadminusername.equals(adminusername)){
+				msg = "ID is yourself";
 			}
 			else{
-				if(database.update(sql)>0)
-				msg = "Admin register success!";
+				String sql = "delete from admin where adminusername='"+cadminusername+"'";
+				database.update(sql);
+				msg = "delete!";
 			}
-                        httpservletrequest.setAttribute("msg",msg);
+			httpservletrequest.setAttribute("msg",msg);
                         httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest, httpservletresponse);
 		}
-        }
+    }
 }

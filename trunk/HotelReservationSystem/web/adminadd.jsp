@@ -1,7 +1,6 @@
 <%-- 
     Document   : adminadd
-    Created on : 2010-3-28, 15:01:40
-    Author     : Liu Chun
+    Author     : Liu Chun Wang Qichen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
@@ -12,13 +11,31 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>add admin</title>
+        <script language="javascript" type="text/javascript">
+        function checkadminreg(){
+            if(document.adminadd.adminusername.value=="")
+      {
+         alert("please input the admin username.");
+         adminadd.adusername.focus();
+         return false;
+      }
+
+      if(document.adminadd.adminusername.value=="")
+      {
+         alert("please input the admin password.");
+         adminadd.adminpassword.focus();
+         return false;
+      }
+      document.adminadd.submit();
+        }
+</script>
     </head>
     <body>
     <div>
-      <table width="381" border="1"><form name="adminadd" action="adminaddserv" method="post">
+      <table><form name="adminadd" action="adminaddserv" method="post">
         <tr>
-          <td width="115">admin username:</td>
-          <td width="250"><label>
+          <td>admin username:</td>
+          <td><label>
             <input type="text" name="adminusername" id="adminusername">
           </label></td>
         </tr>
@@ -31,7 +48,8 @@
         <tr>
           <td>&nbsp;</td>
           <td><label>
-            <input type="submit" name="submit" id="submit" value="submit">
+            <input type="hidden" name="action" value="adminadd">
+            <input type="submit" name="submit" id="submit" value="submit" onclick="checkadminreg()">
           </label></td>
         </tr></form>
       </table>

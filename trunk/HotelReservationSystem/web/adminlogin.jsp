@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
-        <script language="JavaScript">
+        <script language="JavaScript" type="text/javascript">
             function checkinformation()
             {
                 if(document.login.username.value=="")
@@ -32,7 +32,7 @@
     </head>
     <body>
         <div>
-            <table width="200" border="1">
+            <table>
                 <form  name="adminlogin" action="loginserv" method="post">
                     <tr>
                         <td>username:</td>
