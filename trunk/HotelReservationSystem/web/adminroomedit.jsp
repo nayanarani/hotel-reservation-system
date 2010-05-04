@@ -10,6 +10,7 @@
  <html>
   <head>
    <title>edit room</title>
+   <link href="CSS/styleHRS.css" type="text/css" rel="stylesheet">
    <script language="JavaScript" type="text/javascript">
     function check2()
     {
@@ -52,39 +53,34 @@
     }
    </script>
   </head>
- <body>
-<br>
-   <table>
-   <tr>
-      <td>
-        <a target="balnk" href="adminroommanage.jsp">add room</a>
-      </td>
-
-      <td>ID:
-                <form name="searchRes" action="listserv" method="post">
-	    <input type="text" name="roomname">
-	    <input type="button" value="check" onclick="check()">
-	    <input type="hidden" name="action" value="queryRes">
-	 </form> </td>
-    
-    </tr>
-   </table><br><br><br>
-   <table>
-    <th>group</th>
-    <tr>
-     <td>
-      <a href=listserv?action=adminList&&groupid=0>all group</a>
-     </td>
-    </tr>
-    <%
+ <body><div align="center"><fieldset><legend>Edit Room informaion</legend>
+<table border="1">
+<tr>
+  <td rowspan="2"><table>
+  <th id="navigator">group</th>
+  <tr>
+    <td><a href=listserv?action=adminList&&groupid=0>all group</a></td>
+  </tr>
+  <%
       Vector<String[]> vgroup = serv.database.getGroup();
       for(String[] s:vgroup){%>
-    <tr><td>
-      <a href=listserv?action=adminList&&groupid=<%=s[0]%>><%= s[1] %></a>
-    </td></tr>
-     <%}%>
-</table>
-    <%
+  <tr>
+    <td><a href=listserv?action=adminList&&groupid=<%=s[0]%>><%= s[1] %></a></td>
+  </tr>
+  <%}%>
+  </table></td>
+  <td><table>
+    <tr>
+      <td><a target="balnk" href="adminroommanage.jsp">create new room</a></td>
+      <td>Room:
+        <form name="searchRes" action="listserv" method="post">
+          <input type="text" name="roomname">
+          <input type="button" value="check" onclick="check()">
+          <input type="hidden" name="action2" value="queryRes">
+        </form></td>
+    </tr>
+  </table></td></tr>
+<tr><td><%
       Vector<String[]> roominfo =
       	 (Vector<String[]>)request.getAttribute("roominfo");
  	  String []s = roominfo.get(0);
@@ -92,11 +88,11 @@
    <table>
     <form name="resInfo" action="listserv" method="post">
      <tr>
-      <td>ID:</td>
+      <td id="label">ID:</td>
       <td><input type="text" name="newroomname" value=<%= s[0] %>></td>
      </tr>
      <tr>
-      <td>group:</td>
+      <td id="label">group:</td>
       <td>
        <select name="roomgroup">
         <%
@@ -121,21 +117,21 @@
      </tr>
 
      <tr>
-      <td>style:</td>
+      <td id="label">style:</td>
       <td><input type="text" name="style" value=<%= s[1] %>></td>
      </tr>
      <tr>
-      <td>cost:</td>
+      <td id="label">cost:</td>
       <td><input type="text" name="cost" value=<%= s[2] %>></td>
      </tr>
      <tr>
-       <td align="right">detail:</td>
+       <td id="label">detail:</td>
        <td>
          <textarea rows=4 cols=40 name="details"><%= s[3] %></textarea>
        </td>
      </tr>
      <tr>
-      <td>status:</td>
+      <td id="label">status:</td>
       <td>
        <select name="status">
         <option>empty</option>
@@ -163,9 +159,11 @@
        <input type="hidden" name="oldroomname" value=<%= s[0] %>>
        <input type="button" value="save" onclick="check2()">
        <input type="submit" value="delete">
-      </td>
+       <input type="button" name="back" id="back" value="back" onclick="window.location.href='adminroom.jsp'"></td>
      </tr>
     </form>
-   </table><br>
+   </table></td></tr>
+</table></fieldset>
+<br></div>
  </body>
 </html>

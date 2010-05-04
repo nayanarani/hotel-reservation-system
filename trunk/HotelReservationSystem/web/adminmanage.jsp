@@ -11,25 +11,22 @@
  <html>
   <head>
    <title>manage admin</title>
+	<link href="css/styleHRS.css" type="text/css" rel="stylesheet">
   </head>
- <body>
-
-<br>
-    <table>
-     <tr>
-      <td><a href=adminadd.jsp>addadmin</a></td>
-      <td><a href=adminedit.jsp>edit admin</a></td>
-     </tr>
-    </table><br><br>
-    <%
+ <body><div align="center">
+<table>
+<tr>
+  <td><a href=adminadd.jsp>Create admin accout</a><br><br>
+  <a href=adminedit.jsp>Edit admin info</a></td>
+  <td>    <%
        Vector<String []> vadmin = serv.database.getAdminInfo();
      %>
-    <table>
-     <tr>
-       <th>adminID</th>
-       <th>adminlevel</th>
-       <th>delete</th>
-     </tr>
+    <table border="1">
+      <tr bgcolor="#999999">
+        <th id="thlabel">adminID</th>
+        <th id="thlabel">adminlevel</th>
+        <th id="thlabel">delete</th>
+        </tr>
       <%
       for(String []s:vadmin)
       {
@@ -49,12 +46,23 @@
         <td>advanced</td>
         <% } %>
         <td>
-         <a href=admindelserv?action=deladmin&&adminusername=<%= s[0] %>>delete</a>
-        </td>
-       </tr>
-     <%
+          <a href=admindelserv?action=deladmin&&adminusername=<%= s[0] %>>Del</a>
+          </td>
+        </tr>
+      <%
        }
       %>
-    </table>
+      
+      </table></td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td> <label>
+    <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
+    </label></td>
+</table>
+
+
+</div>
  </body>
 </html>

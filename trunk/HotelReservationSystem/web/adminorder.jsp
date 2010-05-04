@@ -10,6 +10,7 @@
 <html>
   <head>
    <title>manage order</title>
+      <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
    <script language="JavaScript" type="text/javascript">
     function check()
     {
@@ -23,7 +24,7 @@
     }
    </script>
   </head>
- <body>
+ <body><div align="center">
    <br>
    <table>
     <tr>
@@ -51,20 +52,21 @@
 	       "orderserv?action=allOrders&&condition=1>return</a></center>");
 	    }
 	    else{%>
-   <table>
-	 <tr>
-	   <th>ID</th>
-           <th>user</th>
-           <th>submit time</th>
-	   <th>status</th>
-           <th>excute admin</th>
-           <th>detail</th>
-	   <th>PS</th>
-           <th>excute order</th>
+   <table border="1">
+	 <tr bgcolor="#999999">
+	   <th id="thlabel">ID</th>
+           <th id="thlabel">user</th>
+           <th id="thlabel">submit time</th>
+	   <th id="thlabel">status</th>
+           <th id="thlabel">excute admin</th>
+           <th id="thlabel">detail</th>
+	   <th id="thlabel">PS</th>
+           <th id="thlabel">excute order</th>
 	 </tr>
 	   <%
 	  	 for(int i=0;i<order.size();i++){
 		   String[] s = order.get(i);%>
+
      <tr>
 	   <td><%= s[0] %></td>
            <td><%= s[1] %></td>
@@ -91,5 +93,7 @@
 	   	</form>
 	</tr> <%}%>
    </table><%}%>
+   <input type="button" name="back" id="back" value="back" onclick="window.location.href='adminorder.jsp'">
+ </div>
  </body>
 </html>

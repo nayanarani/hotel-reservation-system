@@ -1,16 +1,11 @@
-<%-- 
-    Document   : adminroomgroup
-    Created on : 2010-4-30, 15:26:11
-    Author     : Administrator
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
   <head>
-   <title>managegroup</title>
+   <title>Add group</title>
+   <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
    <script language="JavaScript" type="text/javascript">
     function check()
     {
@@ -43,45 +38,49 @@
    </script>
   </head>
  <body>
+ <div align="center">
+ <fieldset>
     <%
       Vector<String> groupinfo =
       	 (Vector<String>)request.getAttribute("groupinfo");
  	%>
-   <center>
-    input correct information
-   </center>
-   <table align="center" border="0" width="60%">
+   <legend>
+    please input correct information
+   </legend>
+   <table border="0">
     <form name="addGroup" action="listserv" method="post">
-     <tr bgcolor="ffeeee">
-      <td align="right" width="20%">group name:</td>
+     <tr>
+      <td id="label">group name:</td>
       <td><input type="text" name="groupname"></td>
      </tr>
 
      <tr>
-      <td align="right">IMGURL:</td>
+      <td id="label">image url:</td>
       <td><input type="text" name="groupimage"></td>
      </tr>
 
      <tr>
-      <td align="right">detail:</td>
+      <td id="label">detail:</td>
       <td>
         <textarea rows=6 cols=50 name="groupdetails"></textarea>
       </td>
      </tr>
      <tr>
-      <td>rule:</td>
+      <td id="label">rule:</td>
       <td>
         <textarea rows=6 cols=50 name="grouprules"></textarea>
       </td>
      </tr>
-     <tr bgcolor="ffeeee"><td></td>
-      <td align="left">
+     <tr><td></td>
+      <td>
        <input type="hidden" name="action" value="addGroup">
        <input type="submit" value="add" onclick="check()">
        <input type="reset" value="reset">
-      </td>
+       <label>
+         <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
+       </label></td>
      </tr>
     </form>
-   </table><br>
+   </table></fieldset></div>
  </body>
 </html>

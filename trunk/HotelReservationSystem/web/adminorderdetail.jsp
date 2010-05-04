@@ -1,9 +1,3 @@
-<%-- 
-    Document   : adminorderdetail
-    Created on : 2010-5-2, 15:27:16
-    Author     : Administrator
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,19 +5,20 @@
 <html>
  <head>
    <title>order detail</title>
+   <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
  </head>
- <body>
+ <body><div align="center">
    <%Vector<String[]> ListDetail =
      (Vector<String[]>)request.getAttribute("ListDetail");
     String orderid =(String)request.getAttribute("orderid");%>
-    <br><center>order:<%= orderid %></center><br>
-   <table>
-	 <tr>
-	   <th>ID</th>
-           <th>type</th>
-           <th>starttime</th>
-	   <th>endtime</th>
-           <th>statue</th>
+    <br><center><strong>Order:<%= orderid %></strong></center><br>
+   <table border="1">
+	 <tr bgcolor="#999999">
+	   <th id="thlabel">ID</th>
+           <th id="thlabel">type</th>
+           <th id="thlabel">starttime</th>
+	   <th id="thlabel">endtime</th>
+           <th id="thlabel">statue</th>
 	  </tr>
 	   <%
 	  	 for(int i=0;i<ListDetail.size();i++){
@@ -36,5 +31,7 @@
 	   <td><%= s[3] %></td>
 	</tr><%}%>
    </table>
+     <input type="button" name="back" id="back" value="back" onclick="window.location.href='adminorder.jsp'">
+ </div>
  </body>
 </html>

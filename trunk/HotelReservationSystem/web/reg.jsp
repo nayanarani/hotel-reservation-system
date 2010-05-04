@@ -1,8 +1,3 @@
-<%-- 
-    Document   : reg
-    Author     : Tang Wan Jian(HTML) Wang Qi Chen(JSP)
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
+        <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
         <script language="JavaScript">
             function checkinformation(){
                 if(document.reg.username.value==""){
@@ -43,29 +39,30 @@
         </script>
     </head>
     <body>
-        <div>
-            <table width="200" border="1">
+        <div align="center">
+        <fieldset><legend>Create your accout</legend>
+            <table width="200" border="0">
                 <form name="reg" action="regserv" method="post">
                     <tr>
-                        <td>Username: </td>
+                        <td id="label">Username: </td>
                         <td><label>
                                 <input type="text" name="username" id="username">
                             </label></td>
                     </tr>
                     <tr>
-                        <td>Password:</td>
+                        <td id="label">Password:</td>
                         <td><label>
-                                <input type="text" name="password" id="password">
+                                <input type="password" name="password" id="password">
                             </label></td>
                     </tr>
                     <tr>
-                        <td>Real name:</td>
+                        <td id="label">Real name:</td>
                         <td><label>
                                 <input type="text" name="realname" id="realname">
                             </label></td>
                     </tr>
                     <tr>
-                        <td>Gender:</td>
+                        <td id="label">Gender:</td>
                         <td><label>
                                 <select name="gender" id="gender">
                                     <option value="male">male</option>
@@ -74,13 +71,13 @@
                             </label></td>
                     </tr>
                     <tr>
-                        <td>E-mail:</td>
+                        <td id="label">E-mail:</td>
                         <td><label>
                                 <input type="text" name="email" id="email">
                             </label></td>
                     </tr>
                     <tr>
-                        <td>Telephone:</td>
+                        <td id="label">Telephone:</td>
                         <td><label>
                                 <input type="text" name="telephone" id="telephone">
                             </label></td>
@@ -90,10 +87,11 @@
                         <td><label>
                                 <input type="hidden" name="action" value="reg">
                                 <input type="submit" name="submit" id="submit" value="submit" onclick="checkinformation()">
-                            </label></td>
+                            <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
+                        </label></td>
                     </tr>
                 </form>
-            </table>
+            </table></fieldset>
         </div>
         <h1>&nbsp;</h1>
     </body>

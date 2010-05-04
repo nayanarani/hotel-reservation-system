@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
         <script language="Javascript">
             function checkpassword(){
        if(document.useredit.oldpassword.value=="")
@@ -33,17 +34,17 @@
         </script>
     </head>
     <body>
-        <div>
-            <table width="320" border="1">
+        <div align="center"><fieldset><legend>change your password</legend>
+            <table width="300" border="0">
                 <form name="changepassword" action="changepasswordserv" method="post">
                 <tr>
-                    <td>old password:</td>
+                    <td id="label">old password:</td>
                     <td><label>
                             <input type="text" name="oldpassword" id="oldpassword">
                         </label></td>
                 </tr>
                 <tr>
-                    <td>new password:</td>
+                    <td id="label">new password:</td>
                     <td><label>
                             <input type="text" name="newpassword" id="newpassword">
                         </label></td>
@@ -56,20 +57,18 @@
                         </label></td>
                 </tr></form>
             </table>
-            <hr />
-
-
-
-            <table width="200" border="1">
+        </fieldset>
+          <fieldset><legend>change your information</legend>
+            <table width="300" border="0">
                 <form name="changeinfo" action="changeinfoserv" method="post">
                 <tr>
-                    <td>real name:</td>
+                    <td id="label">real name:</td>
                     <td><label>
                             <input type="text" name="realname" id="realname">
                         </label></td>
                 </tr>
                 <tr>
-                    <td>gender:</td>
+                    <td id="label">gender:</td>
                     <td><label>
                             <select name="gender" id="gender">
                                 <option>male</option>
@@ -77,14 +76,14 @@
                             </select>
                         </label></td>
                 </tr>
-                <tr>
+                <tr id="label">
                     <td>email:</td>
                     <td><label>
                             <input type="text" name="email" id="email">
                         </label></td>
                 </tr>
                 <tr>
-                    <td>telephone:</td>
+                    <td id="label">telephone:</td>
                     <td><label>
                             <input type="text" name="telephone" id="telephone">
                         </label></td>
@@ -95,9 +94,11 @@
                         <label>
                         <input type="hidden" name="action" value="changeinfo">
                     <input type="submit" name="submit" id="submit" value="submit"></label>
-                    </td>
+                    <label>
+                      <input type="submit" name="back" id="back" value="back">
+                    </label></td>
                 </tr></form>
-            </table>
+            </table></fieldset>
         </div>
 
     </body>

@@ -11,6 +11,7 @@
 <html>
   <head>
    <title>edit group</title>
+   <link href="CSS/styleHRS.css" type="text/css" rel="stylesheet">
    <script language="JavaScript">
     function check()
     {
@@ -43,34 +44,34 @@
     }
    </script>
   </head>
- <body>
+ <body><div align="center"><fieldset>
     <%
       Vector<String> groupinfo =
       	 (Vector<String>)request.getAttribute("groupinfo");
  	%>
-   <center>
+   <legend>
     <%= groupinfo.get(1) %>infomation
-   </center>
+   </legend>
    <table>
     <form name="groInfo" action="listserv" method="post">
      <tr>
-      <td>groupname:</td>
+      <td id="label">groupname:</td>
       <td><input type="text" name="newgroupname" value=<%= groupinfo.get(1) %>></td>
      </tr>
 
      <tr>
-      <td>IMGURL:</td>
+      <td id="label">image url:</td>
       <td><input type="text" name="groupimage" value=<%= groupinfo.get(4) %>></td>
      </tr>
 
      <tr>
-      <td align="right">details:</td>
+      <td id="label">details:</td>
       <td>
         <textarea rows=6 cols=50 name="groupdetails"><%= groupinfo.get(2) %></textarea>
       </td>
      </tr>
      <tr>
-      <td align="right">rule:</td>
+      <td id="label">rule:</td>
       <td>
         <textarea rows=6 cols=50 name="grouprules"><%= groupinfo.get(3) %></textarea>
       </td>
@@ -82,9 +83,9 @@
        <input type="hidden" name="oldgroupname" value=<%= groupinfo.get(1) %>>
        <input type="button" value="save" onclick="check()">
        <input type="submit" value="delete">
-      </td>
+       <input type="button" name="back" id="back" value="back" onclick="window.location.href='adminroomgroup.jsp'"></td>
      </tr>
     </form>
-   </table><br>
+   </table></fieldset></div>
  </body>
 </html>

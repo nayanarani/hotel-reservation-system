@@ -1,7 +1,3 @@
-<%--
-    Document   : roomgrouplist
-    Author     : Wang Qi Chen
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
 
 <% Vector<String> list = (Vector<String>) session.getAttribute("list");
@@ -19,15 +15,19 @@
 <html>
     <head>
         <title>Rservation list for <%=groupname%></title>
+        <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
     </head>
-    <body>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>type</th>
-                <th>price</th>
-                <th>discribe</th>
-                <th>statue</th>
+    <body><div align="center">
+    <table>
+    <tr>
+    	<td>
+        <table border="1" align="center">
+            <tr bgcolor="#666666">
+                <th id="thlabel">Room</th>
+                <th id="thlabel">type</th>
+                <th id="thlabel">price</th>
+                <th id="thlabel">discribe</th>
+                <th id="thlabel">statue</th>
             </tr>
             <% Vector<String[]> v = serv.database.getPageContent(currPage, span, group);
                         int totalPage = serv.database.getTotal(span, group);
@@ -43,7 +43,7 @@
             </tr>
             <%}%>
         </table>
-        <table>
+        <table align="center">
             <tr>
                 <td>
                     <%if (currPage > 1) {%>
@@ -53,7 +53,7 @@
 
                 <td align="center"><br>
                     <form action=roomgrouplist.jsp method="post">
-                        <select name="cp" onchange="this.form.submit();">
+                        <select name="cp" onChange="this.form.submit();">
                             <% for (int i = 1; i <= totalPage; i++) {
                                                             String select = "";
                                                             if (i == currPage) {
@@ -76,7 +76,7 @@
             <tr>
                 <td>
                     <font>
-			reservation rules for <%= groupname%><br>
+			reservation rules for <%= groupname%>:<br>
 			1.<br>
 			2.<br>
 			3.<%= gOrderDet%>
@@ -87,7 +87,7 @@
         <table>
             <form name="order" action="orderserv" method="post">
                 <tr>
-                    <td>ID:</td><td>
+                    <td id="label">Room:</td><td>
                         <select name="orderNum">
                             <%for (String[] s : v) {
                                                             if (serv.orderdatabase.isOrdered(s[0])) {
@@ -100,7 +100,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Group:</td>
+                    <td id="label">Group:</td>
                     <td>
                         <textarea name="group" readonly="readonly"><%= groupname%></textarea>
                     </td>
@@ -112,7 +112,7 @@
                                             int hour = now.getHours();
                 %>
                 <tr>
-                    <td>
+                    <td id="label">
   	  start time:
                     </td>
                     <td>
@@ -172,7 +172,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td id="label">
   	  finish time:
                     </td>
                     <td>
@@ -231,13 +231,18 @@
                     </td>
                 </tr>
                 <tr>
+                <td></td>
                     <td>
                         <input type="hidden" name="action" value="add">
                         <input type="submit" name="add" value="add to order">
-                        <a href="index.jsp">return</a>
-                    </td>
+                    <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'"></td>
                 </tr>
             </form>
         </table>
+        </td>
+        </tr>
+        </table>
+        
+        </div>
     </body>
 </html>

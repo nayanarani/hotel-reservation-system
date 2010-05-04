@@ -10,18 +10,19 @@
  <html>
   <head>
    <title>groupmanage</title>
+   <link href="CSS/styleHRS.css" type="text/css" rel="stylesheet">
   </head>
- <body>
+ <body><div align="center">
     <br>
     <% Vector<String []> vgroup = serv.database.getGroup();
      %>
-    <table>
-     <tr>
-       <th>groupname</th>
-       <th>pic</th>
-       <th>groupdetails</th>
-       <th>grouprules</th>
-       <th>Edit/Del</th>
+    <table border="1">
+     <tr bgcolor="#999999">
+       <th id="thlabel">groupname</th>
+       <th id="thlabel">pic</th>
+       <th id="thlabel">groupdetails</th>
+       <th id="thlabel">grouprules</th>
+       <th id="thlabel">Edit/Del</th>
      </tr>
       <%for(String []s:vgroup){%>
       <tr>
@@ -35,6 +36,6 @@
        </tr>
      <%}%>
     </table><br>
-    <center><a href=adminaddroomgroup.jsp>addgroup</a></center>
+    <center><a href=adminaddroomgroup.jsp>addgroup</a></center></div>
  </body>
 </html>

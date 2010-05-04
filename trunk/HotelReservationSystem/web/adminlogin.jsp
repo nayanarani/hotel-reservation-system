@@ -10,7 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>Admin login</title>
+        <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
         <script language="JavaScript" type="text/javascript">
             function checkinformation()
             {
@@ -31,17 +32,18 @@
         </script>
     </head>
     <body>
-        <div>
+        <div align="center">
+        <fieldset><legend>Login your admin accout:</legend>
             <table>
                 <form  name="adminlogin" action="loginserv" method="post">
                     <tr>
-                        <td>username:</td>
+                        <td id="label">username:</td>
                         <td><label>
                                 <input type="text" name="username" id="username">
                             </label></td>
                     </tr>
                     <tr>
-                        <td>password:</td>
+                        <td id="label">password:</td>
                         <td><label>
                                 <input type="text" name="password" id="password">
                             </label></td>
@@ -52,10 +54,12 @@
                                 <input type="hidden" name="action" value="adminlogin">
                                 <input type="submit" name="submit" id="submit" value="submit" onclick="checkinformation()">
                             </label>
-                        </td>
+                        <label>
+                          <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
+                        </label></td>
                     </tr>
                 </form>
-            </table>
+            </table></fieldset>
         </div>
 
     </body>

@@ -1,15 +1,11 @@
-<%-- 
-    Document   : adminaddroom
-    Author     : Liu Chun
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
  <html>
   <head>
-   <title>add room</title>
+   <title>Add room</title>
+   <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
    <script language="JavaScript" type="text/javascript">
     function checkadminaddroom()
     {
@@ -52,47 +48,44 @@
    </script>
   </head>
  <body>
-        <table><form name="searchRes" action="listserv" method="post">
-   <tr>
-      <td>
-        <a target="balnk" href="adminaddroom.jsp">add room</a>
-      </td>
-      
-      <td>id:
-	    <input type="text" name="roomname">
-	    <input type="button" value="check" onclick="check()">
-	    <input type="hidden" name="action" value="queryRes">
-	  </td>
-   </tr>
-
-    </form>
-   </table><br><br><br>
-   <table>
-    <th>Group</th>
-    <tr>
-     <td>
-      <a href=listserv?action=adminList&&groupid=0>All group</a>
-     </td>
-    </tr>
-    <%
+ <div align="center">
+ <table border="1">
+ <tr>
+ <td rowspan="2"><table>
+  <th id="navigator">Group</th>
+  <tr>
+    <td><a href=listserv?action=adminList&&groupid=0>All group</a></td>
+  </tr>
+  <%
       Vector<String[]> vgroup = serv.database.getGroup();
       for(String[] s:vgroup){%>
-    <tr><td>
-      <a href=listserv?action=adminList&&groupid=<%=s[0]%>><%= s[1] %></a>
-    </td></tr>
-     <%}%>
-</table>
-   <center>
-    <font>please input the correct information</font>
-   </center><br>
+  <tr>
+    <td><a href=listserv?action=adminList&&groupid=<%=s[0]%>><%= s[1] %></a></td>
+  </tr>
+  <%}%>
+ </table></td>
+ <td><table align="right">
+   <form name="searchRes" action="listserv" method="post">
+     <tr>
+       <td><a target="balnk" href="adminaddroom.jsp">create room</a></td>
+       <td>Room:
+         <input type="text" name="roomname2">
+         <input type="button" value="check" onclick="check()">
+         <input type="hidden" name="action2" value="queryRes"></td>
+     </tr>
+   </form>
+ </table></td></tr>
+ <tr><td><fieldset>
+   <legend>please input the correct information:</legend>
+  
    <table>
     <form name="addRes" action="listserv" method="post">
      <tr>
-      <td>room id:</td>
+      <td id="label">room:</td>
       <td><input type="text" name="roomname"></td>
      </tr>
      <tr>
-      <td>room group:</td>
+      <td id="label"> group:</td>
       <td>
        <select name="roomgroup">
 		<%
@@ -107,21 +100,21 @@
       </td>
      </tr>
      <tr>
-      <td>style:</td>
+      <td id="label">style:</td>
       <td><input type="text" name="style"></td>
      </tr>
      <tr>
-      <td>cost:</td>
+      <td id="label">cost:</td>
       <td><input type="text" name="cost"></td>
      </tr>
      <tr>
-       <td>details:</td>
+       <td id="label">details:</td>
        <td>
          <textarea rows=4 cols=40 name="details"></textarea>
        </td>
      </tr>
      <tr>
-      <td>status:</td>
+      <td id="label">status:</td>
       <td>
        <select name="status">
         <option>empty</option>
@@ -134,9 +127,14 @@
         <input type="hidden" name="action" value="addRes">
         <input type="submit" value="save" onclick="checkadminaddroom()">
         <input type="reset" value="reset">
-       </td>
+        <label>
+          <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
+        </label></td>
      </tr>
     </form>
-   </table>
+   </table></fieldset></td></tr>
+ </table><br><br><br>
+ 
+ </div>
  </body>
 </html>

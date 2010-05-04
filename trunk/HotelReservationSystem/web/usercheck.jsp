@@ -12,11 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>check</title>
     </head>
-    <body>
+    <body><div align="center">
         <%String message = (String) request.getAttribute("msg");
                     if (message != null) {
                         out.println(message);
                     }
-        %>
+        %></div>
     </body>
 </html>

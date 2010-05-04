@@ -11,57 +11,64 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index</title>
+        <link href="CSS/styleHRS.css" type="text/css" rel="stylesheet">
     </head>
     <body>
-        <div>
-            <table width="1024" border="1">
+        <div align="center">
+            <table width="1024" border="0" bgcolor="#FFFFFF">
                 <tr>
-                    <td colspan="2"><h1>Hotel Reservation System</h1> <a href="adminlogin.jsp">admin login</a></td>
+                    <td align="center" height="100" colspan="2"><img src="IMG/logo.jpg" width="1020" height="150" alt=""></td>
                 </tr>
+
                 <tr>
-                    <td colspan="2">navigator</td>
-                </tr>
-                <tr>
-                    <td width="200">
+                    <td id="sidebar" width="200" bgcolor="#CCCCCC">
                         <%if(session.getAttribute("username")==null && session.getAttribute("adminusername")==null && session.getAttribute("adminroot")==null){%>
-                        Welcome Guest<br><a href=login.jsp>Log In</a><br><br><a href="reg.jsp">Register</a>
-                        <%}else if(session.getAttribute("username")!=null){%>
+       <table width="200" align="center"><tr><td id="navigator"><strong>Welcome, Guest :<br>
+       </strong></td></tr>
+                         <tr><td id="menu"><a href="adminlogin.jsp">admin login</a></td></tr>
+                        <tr><td id="menu"><a href=login.jsp>Sign in</a></td></tr>
+                        <tr><td id="menu"><a href="reg.jsp">Sign up</a></td></tr></table>
+                    <%}else if(session.getAttribute("username")!=null){%>
                         <%String username = (String)session.getAttribute("username");%>
-                        Welcome,<%out.println(username);%><br>
-                        <a href=useredit.jsp>Edit my profile</a><br><br>
-                        <a href=userorder.jsp>My Order</a><br><br>
-                        <a href=logoutserv?action=logout>logout</a>
-                        <%} else if(session.getAttribute("adminusername")!=null){ %>
+                        <table width="200" align="center"><tr><td id="navigator"><strong>Welcome,
+                        <%out.println(username);%> 
+                        :</strong></td></tr>
+                        <tr><td id="menu"><a href=useredit.jsp>Edit my profile</a></td></tr>
+                        <tr><td id="menu"><a href=userorder.jsp>My Order</a></td></tr>
+                        <tr><td id="menu"><a href=logoutserv?action=logout>Logout</a></td></tr></table>
+
+                    <%} else if(session.getAttribute("adminusername")!=null){ %>
                         <%String adminusername = (String)session.getAttribute("adminusername");%>
-                        Welcome,<%out.println(adminusername);%><br>
-                        <a href=listserv?action=adminList&&groupid=0>manage room</a><br><br>
-                        <a href=listserv?action=adminGroup>manage room group</a><br><br>
-                        <a href=orderserv?action=allOrders&&condition=1>manage order</a><br><br>
-                        <a href=logoutserv?action=logout>logout</a>
-                        <%} else if(session.getAttribute("adminroot")!=null){ %>
+                        <table width="200" align="center"><tr><td id="navigator"><strong>Welcome,
+                        <%out.println(adminusername);%>
+                        :</strong></td></tr>
+                        <tr><td id="menu"><a href=listserv?action=adminList&&groupid=0>manage room</a></td></tr>
+                        <tr><td id="menu"><a href=listserv?action=adminGroup>manage room group</a></td></tr>
+                        <tr><td id="menu"><a href=orderserv?action=allOrders&&condition=1>manage order</a></td></tr>
+                        <tr><td id="menu"><a href=logoutserv?action=logout>logout</a></td></tr></table>
+                    <%} else if(session.getAttribute("adminroot")!=null){ %>
                         <%String adminroot = (String)session.getAttribute("adminroot");%>
-                        Welcome,<%out.println(adminroot);%><br>
-                        <a href=adminmanage.jsp>manage admin</a><br><br>
-                        <a href=adminedit.jsp>edit password</a><br><br>
-                        <a href=logoutserv?action=logout>logout</a>
+                        <table width="200" align="center"><tr><td id="navigator"><strong>Welcome,
+                        <%out.println(adminroot);%>
+                        </strong></td></tr>
+                        <tr><td id="menu"><a href=adminmanage.jsp>manage admin</a></td></tr>
+                        <tr><td id="menu"><a href=adminedit.jsp>edit password</a></td></tr>
+                        <tr><td id="menu"><a href=logoutserv?action=logout>Logout</a></td></tr></table>
                         <%}%>
-                        </td>
+                  </td>
                     <td width="808" height="300">
-                        <table border="1" width="80%">
+                        <table width="90%" height="151" border="1" align="center">
                             <%Vector<String[]> v = database.getGroup();
                                         for (String[] s : v) {%>
-                                        <tr><td><%=s[1]%></td>
-                                            <td><%=s[4]%></td>
+                       					<tr><td width="150" rowspan="2"><%=s[4]%></td>
+                       					  <td height="30" ><%=s[1]%></td>
+                       					  <td width="150" rowspan="2" ><a href=listserv?action=list&&groupid=<%=s[0]%>>reservation a room!>></a></td>
+                       					</tr>
+                                        <tr>
+                                            <td width="300"><%=s[2]%></td>
                                         </tr>
-                            <tr>
-                                <td>
-                                    <%=s[2]%>
-                                </td>
-                                <td>
-                                    <a href=listserv?action=list&&groupid=<%=s[0]%>>reservation a room!>></a>
-                                </td>
-                            </tr>
                             <%}%>
+                           
                         </table>
                     </td>
                 </tr>
