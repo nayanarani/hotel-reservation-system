@@ -46,7 +46,7 @@ public class orderserv extends HttpServlet{
 				String sql = "select * from orders where orderuser='"+username+"'";
 				Vector<String []> list = orderdatabase.getOrderList(sql);
 				httpservletrequest.setAttribute("list",list);
-				httpservletrequest.getRequestDispatcher("list.jsp").forward(httpservletrequest,httpservletresponse);
+				httpservletrequest.getRequestDispatcher("userorder.jsp").forward(httpservletrequest,httpservletresponse);
 			}
                 }
                 if(action.equals("add")){
@@ -75,7 +75,7 @@ public class orderserv extends HttpServlet{
                                 msg = "Reservation successful!<br><br><a href=roomgrouplist.jsp>continue?</a> or <a href=index.jsp>return</a>";
 			}
                         httpservletrequest.setAttribute("msg",msg);
-			httpservletresponse.sendRedirect("roomgrouplist.jsp");
+			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 		}
             if(action.equals("delete")){
 			String id = httpservletrequest.getParameter("index");
