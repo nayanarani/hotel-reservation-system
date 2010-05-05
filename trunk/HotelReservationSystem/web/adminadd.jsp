@@ -40,7 +40,7 @@
         <tr>
           <td id="label">admin password:</td>
           <td><label>
-            <input type="text" name="adminpassword" id="adminpassword">
+            <input type="password" name="adminpassword" id="adminpassword">
           </label></td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
           <td><label>
             <input type="hidden" name="action" value="adminadd">
             <input type="submit" name="submit" id="submit" value="submit" onclick="checkadminreg()">
-            <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
+            <input type="button" name="back" id="back" value="back" onclick="window.location.href='adminmanage.jsp'">
           </label></td>
         </tr></form>
         

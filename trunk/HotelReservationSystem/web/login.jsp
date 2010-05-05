@@ -33,7 +33,7 @@
     </head>
     <body>
         <div align="center">
-        <fieldset><legend>Login your acouut</legend>
+        <fieldset><legend>Login your account</legend>
             <table width="200" border="0">
                 <form  name="login" action="loginserv" method="post">
                     <tr>

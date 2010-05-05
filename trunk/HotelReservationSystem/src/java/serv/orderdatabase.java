@@ -21,13 +21,13 @@ public class orderdatabase {
     public static boolean isOrdered(String rname) {
         boolean b = false;
         try {
-            String accept = new String("waiting for accept");
-            String used = new String("used");
+            String apply = new String("waiting for apply");
+            String used = new String("successd");
             String roomname = new String(rname);
             connection = database.getConnection();
             statement = connection.createStatement();
             resultset = statement.executeQuery("select roomname from orderdetail where status='"
-                    + accept + "' and roomname='" + roomname + "'");
+                    + apply + "' and roomname='" + roomname + "'");
             if (resultset.next()) {
                 b = true;
             }

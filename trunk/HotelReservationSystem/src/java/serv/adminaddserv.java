@@ -29,14 +29,14 @@ public class adminaddserv extends HttpServlet{
 			String adminusername = httpservletrequest.getParameter("adminusername");
 			String adminpassword = httpservletrequest.getParameter("adminpassword");
 			String sql = "insert into admin values"+
-			  			 "(NULL,'"+adminusername+"','"+adminpassword+"','Advanced')";
+			  			 "(NULL,'"+adminusername+"','"+adminpassword+"','advanced')";
 			String sqla = "select * from admin where adminusername='"+adminusername+"'";
 			if(database.isExist(sqla)){
-				msg = "Error! the admin username has been existed!";
+				msg = "Error! the admin username has been existed!<a href=adminlogin.jsp>return to register again!</a>";
 			}
 			else{
 				if(database.update(sql)>0)
-				msg = "Admin register success!";
+				msg = "Admin register success!<a href=adminadd.jsp>return to login</a>";
 			}
                         httpservletrequest.setAttribute("msg",msg);
                         httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest, httpservletresponse);

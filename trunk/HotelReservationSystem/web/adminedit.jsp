@@ -49,13 +49,13 @@
         <tr>
           <td id="label">admin old password:</td>
           <td><label>
-            <input type="text" name="adminoldpassword" id="adminoldpassword">
+            <input type="password" name="adminoldpassword" id="adminoldpassword">
           </label></td>
         </tr>
         <tr>
           <td id="label">admin new password:</td>
           <td><label>
-            <input type="text" name="adminnewpassword" id="adminnewpassword">
+            <input type="password" name="adminnewpassword" id="adminnewpassword">
           </label></td>
         </tr>
         <tr>

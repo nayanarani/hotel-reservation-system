@@ -31,7 +31,7 @@
 	   <td><%= s[3] %></td>
 	</tr><%}%>
    </table>
-     <input type="button" name="back" id="back" value="back" onclick="window.location.href='adminorder.jsp'">
+     <input type="button" name="back" id="back" value="back" onclick="window.location.href='orderserv?action=allOrders&&condition=1'">
  </div>
  </body>
 </html>

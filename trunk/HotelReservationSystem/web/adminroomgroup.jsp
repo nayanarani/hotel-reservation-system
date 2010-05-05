@@ -36,6 +36,8 @@
        </tr>
      <%}%>
     </table><br>
-    <center><a href=adminaddroomgroup.jsp>addgroup</a></center></div>
+    <center><a href=adminaddroomgroup.jsp>addgroup</a></center>
+     <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
+     </div>
  </body>
 </html>
