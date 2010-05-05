@@ -95,7 +95,7 @@
                         <input type="hidden" name="action" value="changeinfo">
                     <input type="submit" name="submit" id="submit" value="submit"></label>
                     <label>
-                      <input type="submit" name="back" id="back" value="back">
+                      <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
                     </label></td>
                 </tr></form>
             </table></fieldset>

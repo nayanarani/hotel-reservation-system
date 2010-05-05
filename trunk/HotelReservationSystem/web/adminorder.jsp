@@ -93,7 +93,7 @@
 	   	</form>
 	</tr> <%}%>
    </table><%}%>
-   <input type="button" name="back" id="back" value="back" onclick="window.location.href='adminorder.jsp'">
+   <input type="button" name="back" id="back" value="back" onclick="window.location.href='index.jsp'">
  </div>
  </body>
 </html>

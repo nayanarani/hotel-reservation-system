@@ -38,7 +38,7 @@
                 <td><%=s[2]%></td>
                 <td><%=s[3]%></td>
                 <td>
-                    <a target="blank" href=listserv?action=status&&groupname=<%= s[0]%>>Look</a>
+                    <a target="blank" href=listserv?action=status&&roomname=<%= s[0]%>>Look</a>
                 </td>
             </tr>
             <%}%>
@@ -77,8 +77,8 @@
                 <td>
                     <font>
 			reservation rules for <%= groupname%>:<br>
-			1.<br>
-			2.<br>
+			1.please input correct reservation time<br>
+			2.please check out the information about the room<br>
 			3.<%= gOrderDet%>
                     </font>
                 </td>

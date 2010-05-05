@@ -8,7 +8,7 @@
    <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
   </head>
  <body><div align="center"> 
-  <script language="JavaScript">
+  <script language="JavaScript" type="text/javascript">
     function check()
     {
        if(document.searchRes.roomname.value=="")

@@ -11,13 +11,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index</title>
-        <link href="CSS/styleHRS.css" type="text/css" rel="stylesheet">
+        <link href="css/styleHRS.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         <div align="center">
             <table width="1024" border="0" bgcolor="#FFFFFF">
                 <tr>
-                    <td align="center" height="100" colspan="2"><img src="IMG/logo.jpg" width="1020" height="150" alt=""></td>
+                    <td align="center" height="100" colspan="2"><img src="image/logo.jpg" width="1020" height="150" alt=""></td>
                 </tr>
 
                 <tr>
@@ -25,7 +25,6 @@
                         <%if(session.getAttribute("username")==null && session.getAttribute("adminusername")==null && session.getAttribute("adminroot")==null){%>
        <table width="200" align="center"><tr><td id="navigator"><strong>Welcome, Guest :<br>
        </strong></td></tr>
-                         <tr><td id="menu"><a href="adminlogin.jsp">admin login</a></td></tr>
                         <tr><td id="menu"><a href=login.jsp>Sign in</a></td></tr>
                         <tr><td id="menu"><a href="reg.jsp">Sign up</a></td></tr></table>
                     <%}else if(session.getAttribute("username")!=null){%>
@@ -60,7 +59,7 @@
                         <table width="90%" height="151" border="1" align="center">
                             <%Vector<String[]> v = database.getGroup();
                                         for (String[] s : v) {%>
-                       					<tr><td width="150" rowspan="2"><%=s[4]%></td>
+                                        <tr><td align="center" width="150" rowspan="2"><img alt="RoomPic" src="<%=s[4]%>"/></td>
                        					  <td height="30" ><%=s[1]%></td>
                        					  <td width="150" rowspan="2" ><a href=listserv?action=list&&groupid=<%=s[0]%>>reservation a room!>></a></td>
                        					</tr>
@@ -71,6 +70,11 @@
                            
                         </table>
                     </td>
+                </tr>
+                <tr>
+                <td align="center" colspan="2">
+                <hr>
+                <p>Copy Right by Group 16</p></td>
                 </tr>
             </table>
         </div>
