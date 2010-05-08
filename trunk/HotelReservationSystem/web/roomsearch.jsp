@@ -1,9 +1,3 @@
-<%-- 
-    Document   : roomsearch
-    Created on : 2010-5-2, 17:02:53
-    Author     : Administrator
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,13 +9,13 @@
    <script language="javascript" type="text/javascript">
    function check()
     {
-       if(document.searchRes.roomname.value=="")
+       if(document.searchroom.roomname.value=="")
        {
          alert("please input id to serach");
-         searchRes.roomname.focus();
+         searchroom.roomname.focus();
          return false;
        }
-       document.searchRes.submit();
+       document.searchroom.submit();
     }
    </script>
   </head>
@@ -41,7 +35,7 @@
       <a href=listserv?action=adminList&&groupid=<%=s[0]%>><%= s[1] %></a>
     </td></tr>
      <%}%>
-</table></td><td><table><form name="searchRes" action="listserv" method="post">
+</table></td><td><table><form name="searchroom" action="listserv" method="post">
    <tr>
       <td align="center">
         <a target="balnk" href="adminaddroom.jsp">add room</a>
@@ -49,8 +43,8 @@
 
       <td align="right">Room:
 	    <input type="text" name="roomname">
-	    <input type="button" value="check" onclick="check()">
-	    <input type="hidden" name="action" value="queryRes">
+	    <input type="button" value="search" onclick="check()">
+	    <input type="hidden" name="action" value="searchRoom">
 	  </td>
    </tr>
 

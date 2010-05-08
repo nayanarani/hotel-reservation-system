@@ -18,7 +18,7 @@ public class orderdatabase {
         boolean b = false;
         try {
             String apply = new String("waiting for apply");
-            String used = new String("successd");
+            String used = new String("used");
             String roomname = new String(rname);
             connection = database.getConnection();
             statement = connection.createStatement();
@@ -65,7 +65,7 @@ public class orderdatabase {
     	public static Vector<String []> getOrderedDay(String getroomname){
 		Vector<String []> v = new Vector<String []>();
 		try{
-			String status = new String("Success!");
+			String status = new String("success");
 			String roomname = new String(getroomname);
 			connection = database.getConnection();
 			statement = connection.createStatement();
@@ -74,7 +74,9 @@ public class orderdatabase {
 			while(resultset.next()){
 				String []s =new String[2];
 				s[0] = new String(resultset.getString(1));
+                                System.out.println(s[0]);
 				s[1] = new String(resultset.getString(2));
+                                System.out.println(s[1]);
 				java.util.Date etime = orderdatabase.chageStringToDate(s[1]);
 				java.util.Date now = new java.util.Date();
 				if(etime.after(now)) {v.add(s);}

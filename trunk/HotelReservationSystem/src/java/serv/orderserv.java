@@ -29,7 +29,7 @@ public class orderserv extends HttpServlet{
 		String msg="";
 		String username = (String)session.getAttribute("username");
 		String accept = "waiting for accept";
-		String successfully = "successfully";
+		String successfully = "success";
 		String failed = "failed";
 
                 Vector<String[]> OrderList = (Vector<String[]>)session.getAttribute("OrderList");
@@ -46,7 +46,7 @@ public class orderserv extends HttpServlet{
 				String sql = "select * from orders where orderuser='"+username+"'";
 				Vector<String []> list = orderdatabase.getOrderList(sql);
 				httpservletrequest.setAttribute("list",list);
-				httpservletrequest.getRequestDispatcher("userorder.jsp").forward(httpservletrequest,httpservletresponse);
+				httpservletrequest.getRequestDispatcher("userorderstatus.jsp").forward(httpservletrequest,httpservletresponse);
 			}
                 }
                 if(action.equals("add")){
@@ -155,6 +155,18 @@ public class orderserv extends HttpServlet{
 			else{msg = "error";}
 			httpservletrequest.setAttribute("msg",msg);
 			httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
+		}
+         if(action.equals("searchOrder")){
+		    Vector<String []> order = null;
+		    try{
+		    	int orderid = Integer.parseInt(httpservletrequest.getParameter("orderid"));
+				String sql = "select * from orders where orderid="+orderid;
+				order = orderdatabase.getOrderList(sql);
+		    }
+		    catch(NumberFormatException nfe)
+		    {order = new Vector<String []>();}
+			httpservletrequest.setAttribute("order",order);
+			httpservletrequest.getRequestDispatcher("adminorder.jsp").forward(httpservletrequest,httpservletresponse);
 		}
 	
     }

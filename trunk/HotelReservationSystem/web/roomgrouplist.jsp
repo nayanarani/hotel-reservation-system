@@ -3,7 +3,7 @@
 <% Vector<String> list = (Vector<String>) session.getAttribute("list");
             int group = Integer.parseInt(list.get(0));
             String groupname = list.get(1);
-            String gOrderDet = list.get(2);
+            String grouprules = list.get(3);
             String cpStr = request.getParameter("cp");
             String title = groupname + "List";
             int currPage = 1;
@@ -79,7 +79,7 @@
 			reservation rules for <%= groupname%>:<br>
 			1.please input correct reservation time<br>
 			2.please check out the information about the room<br>
-			3.<%= gOrderDet%>
+			3.<%= grouprules%>
                     </font>
                 </td>
             </tr>

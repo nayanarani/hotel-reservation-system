@@ -42,6 +42,7 @@ public class listserv extends HttpServlet {
 			if(orderdatabase.isOrdered(roomname)) {isOrdered = "YES";}
 			else {v = orderdatabase.getOrderedDay(roomname);}
 			httpservletrequest.setAttribute("v",v);
+                        System.out.println(v);
 			httpservletrequest.setAttribute("roomname",roomname);
 			httpservletrequest.setAttribute("isOrdered",isOrdered);
 			httpservletrequest.getRequestDispatcher("statussearch.jsp").forward(httpservletrequest,httpservletresponse);
@@ -91,7 +92,7 @@ public class listserv extends HttpServlet {
         if(action.equals("editRes")){
 			int roomid = Integer.parseInt(httpservletrequest.getParameter("roomid"));
 			String sql = "select roomname,style,cost,details,status,roomgroup,roomid from room where roomid='"+roomid+"'";
-			Vector<String []> roominfo = database.getResInfo(sql);
+			Vector<String []> roominfo = database.getRoomInformation(sql);
 			httpservletrequest.setAttribute("roominfo",roominfo);
 			httpservletrequest.getRequestDispatcher("adminroomedit.jsp").forward(httpservletrequest,httpservletresponse);
 		}
@@ -213,11 +214,10 @@ httpservletrequest.setAttribute("msg",msg);
 			httpservletrequest.setAttribute("msg",msg);
                     httpservletrequest.getRequestDispatcher("usercheck.jsp").forward(httpservletrequest,httpservletresponse);
 		}
-        if(action.equals("queryRes")){
+        if(action.equals("searchRoom")){
 			String roomname = httpservletrequest.getParameter("roomname");
-			String sql = "select roomname,style,cost,details,status,roomgroup,roomid "+
-										"from room where roomname='"+roomname+"'";
-			Vector<String[]> v = database.getResInfo(sql);
+			String sql = "select roomname,style,cost,details,status,roomgroup,roomid from room where roomname='"+roomname+"'";
+			Vector<String[]> v = database.getRoomInformation(sql);
 			httpservletrequest.setAttribute("list",v);
 			httpservletrequest.getRequestDispatcher("roomsearch.jsp").forward(httpservletrequest,httpservletresponse);
 		}

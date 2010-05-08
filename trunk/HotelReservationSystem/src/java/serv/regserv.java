@@ -35,7 +35,12 @@ public class regserv extends HttpServlet {
             String gender = httpservletrequest.getParameter("gender").trim();
             String email = httpservletrequest.getParameter("email").trim();
             String telephone = httpservletrequest.getParameter("telephone").trim();
-
+            System.out.println(username);
+            System.out.println(password);
+            System.out.println(realname);
+            System.out.println(gender);
+            System.out.println(email);
+            System.out.println(telephone);
             String sqla = "select * from user where username='" + username + "'";
             if (database.isExist(sqla)) {
                 msg = username + ": has been existed try another one!!!<br/><a href=reg.jsp>return to the register page!</a>";

@@ -238,15 +238,17 @@ public static Vector<String[]> getPageContent(int page,int span,int group){
 	public static int getId(String table,String row){
 		int id = 0;
 		try	{
+                    System.out.println(row);
 			connection = database.getConnection();
 			statement = connection.createStatement();
 			resultset = statement.executeQuery("select count(*) from "+table+"");
 			resultset.next();
 			if(resultset.getInt(1)==0)	{ id = 1; }
 			else{
-				resultset = statement.executeQuery("select max("+row+") from '"+table+"'");
+				resultset = statement.executeQuery("select max("+row+") from "+table+"");
 				resultset.next();
-				id = Integer.parseInt(resultset.getString(1));
+				id = Integer.parseInt(resultset.getString(1))+1;
+                                System.out.println(id);
 			}
 		}
 		catch(Exception e){e.printStackTrace();}
@@ -273,7 +275,7 @@ public static Vector<String[]> getPageContent(int page,int span,int group){
 		finally{database.closeConnection();}
 		return v;
 	}
-                	public static Vector<String[]> getResInfo(String sqla){
+                	public static Vector<String[]> getRoomInformation(String sqla){
 		Vector<String []> v = new Vector<String[]>();
 		try{
 			connection = database.getConnection();

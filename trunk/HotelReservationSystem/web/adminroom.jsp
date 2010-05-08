@@ -11,13 +11,13 @@
   <script language="JavaScript" type="text/javascript">
     function check()
     {
-       if(document.searchRes.roomname.value=="")
+       if(document.search.roomname.value=="")
        {
          alert("please input ID!");
-         searchRes.roomname.focus();
+         search.roomname.focus();
          return false;
        }
-       document.searchRes.submit();
+       document.search.submit();
     }
 </script>
   <br>
@@ -42,10 +42,11 @@
       </td>
 
       <td>Room:
-              <form name="searchRes" action="listserv" method="post">
+              <form name="search" action="listserv" method="post">
 	    <input type="text" name="roomname">
+            <input type="hidden" name="action" value="searchRoom">
 	    <input type="button" value="check" onclick="check()">
-	    <input type="hidden" name="action" value="queryRes">
+
                 </form>
 	  </td>
 

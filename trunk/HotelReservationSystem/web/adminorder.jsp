@@ -1,8 +1,3 @@
-<%-- 
-    Document   : adminorder
-    Author     : Tang Wanjian Wang Qichen
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,13 +9,13 @@
    <script language="JavaScript" type="text/javascript">
     function check()
     {
-       if(document.searchOrder.orderid.value=="")
+       if(document.searchorder.orderid.value=="")
        {
          alert("please input the order ID");
-         searchOrder.orderid.focus();
+         searchorder.orderid.focus();
          return false;
        }
-       document.searchOrder.submit();
+       document.searchorder.submit();
     }
    </script>
   </head>
@@ -33,10 +28,10 @@
 	   <td><a href=orderserv?action=allOrders&&condition=3>not accept yet</a></td>
 
 	   <td>order ID:
-            <form name="searchOrder" action="orderserv" method="post">
-	    <input type="hidden" name="action" value="query">
+            <form name="searchorder" action="orderserv" method="post">
+	    <input type="hidden" name="action" value="searchOrder">
 	    <input type="text" name="orderid">
-	    <input type="button" value="query" onclick="check()">
+	    <input type="button" value="search" onclick="check()">
             </form>
 
 	   </td>
@@ -81,7 +76,7 @@
 	      <input type="text" name="reason" size="10" value=<%= s[5] %>>
 	   </td><td align="center">
 	     <select name="status">
-	     <option selected>successd</option>
+	     <option selected>success</option>
 	     <option>failed</option>
 	     <option>waiting for apply</option>
 	     </select>

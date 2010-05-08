@@ -34,6 +34,7 @@
                         :</strong></td></tr>
                         <tr><td id="menu"><a href=useredit.jsp>Edit my profile</a></td></tr>
                         <tr><td id="menu"><a href=userorder.jsp>My Order</a></td></tr>
+                        <tr><td id="menu"><a href=orderserv?action=order>check order status</a></td></tr>
                         <tr><td id="menu"><a href=logoutserv?action=logout>Logout</a></td></tr></table>
 
                     <%} else if(session.getAttribute("adminusername")!=null){ %>

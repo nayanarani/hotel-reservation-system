@@ -12,7 +12,7 @@
   <%Vector<String[]> OrderList=(Vector<String[]>)session.getAttribute("OrderList");
      if(OrderList==null||OrderList.size()==0){
       out.println("<center>");
-      out.println("<font color=red size=5>You have not reserve yet!</font>");
+      out.println("<font>You have not reserve yet!</font>");
       out.println("<br><br><a href=index.jsp>return");
      }else{%>
    <table border="1">
